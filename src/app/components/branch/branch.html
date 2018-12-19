@@ -1,0 +1,11 @@
+<a [routerLink]="branchLink" *ngIf="branch">
+    <mat-card>
+        <div class="image text-center" >
+            <img [alt]="branch.Names | datatranslate:branch.Name" 
+                 [src]="branch.Filestream | filestream" [title]="branch.Names | datatranslate:branch.Name">
+        </div>
+        <mat-card-title>{{branch.Names | datatranslate:branch.Name}}</mat-card-title>
+            <mat-card-subtitle>{{branch.Addresses | datatranslate:branch.Address}}</mat-card-subtitle>
+    </mat-card>
+</a>
+

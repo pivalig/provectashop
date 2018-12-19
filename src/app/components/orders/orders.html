@@ -1,0 +1,23 @@
+<div style="overflow: hidden" >
+    <div class="order-line" *ngFor="let order of orders; let last = last">
+        <div class=" row" *ngIf="order">
+            <div class="col-sm-10 col-xs-4">
+                <h4 class="cursor-pointer primary" [routerLink]="'/'+order.Organisation.Code">{{order.Organisation.Name}}</h4>
+                <p>
+                    <span>{{order.CreatedOn | date :'dd.MM.yyyy HH:mm'}}</span>
+                </p>
+            </div>
+            <div class="col-sm-2 col-xs-8 text-right">
+                <b>{{order.DebitSum | number:'1.2-2'}}</b>
+            </div>
+
+        </div>
+        <hr *ngIf="!last">
+    </div>
+
+    <div class="load-more">
+        <mat-spinner *ngIf="isLoading" [diameter]="30"></mat-spinner>
+        <button *ngIf="canLoadMore() && !isLoading" (click)="loadMore()" mat-button>{{'Load more'|translate}}</button>
+    </div>
+
+</div>

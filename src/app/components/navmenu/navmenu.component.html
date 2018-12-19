@@ -1,0 +1,12 @@
+<nav class="navigation ">
+  <a [routerLinkActive]="['link-active']" class="visible-xs" [routerLink]="getLink('')">{{'Home'|translate}}</a>
+  <!-- <div *ngIf="this.apiAccessService.storeId"> -->
+    <a *ngIf="this.apiAccessService.storeId" [routerLinkActive]="['link-active']" class="" [routerLink]="getLink('blog')">{{'Blog'|translate}}</a>
+    <a *ngIf="this.apiAccessService.storeId" [routerLinkActive]="['link-active']" class="" [routerLink]="getLink('branches')">{{'About us'|translate}}</a>
+  <!-- </div> -->
+  <button [routerLink]="'/account'" mat-icon-button>
+    <mat-icon class="hidden-xs" *ngIf="user">person</mat-icon>
+    <mat-icon class="hidden-xs" *ngIf="!user">person_outline</mat-icon>
+    <span class="visible-xs">{{'Profile'|translate}}</span>
+  </button>
+</nav>

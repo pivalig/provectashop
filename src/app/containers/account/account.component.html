@@ -1,0 +1,50 @@
+<div *ngIf="!person">
+    <div class="container">
+
+        <mat-card>
+            <mat-card-content>
+                <signin></signin>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div *ngIf="person">
+
+
+    <div class="container">
+        <!-- <loading-panel [loading]="!blog"></loading-panel> -->
+
+        <mat-card class="mat-elevation-z6 ">
+            <mat-card-header>
+                <img *ngIf="person.User?.FacebookId" mat-card-avatar src="https://graph.facebook.com/{{person.User?.FacebookId}}/picture?type=large">
+
+                <mat-card-title>
+                    <span>{{person.FirstName}}</span>
+                    <span> {{person.LastName}}</span>
+                </mat-card-title>
+                <mat-card-subtitle *ngIf="person.Email && person.Email?.indexOf('provectapos') < 0">{{person.User?.Code}}</mat-card-subtitle>
+                <mat-card-subtitle *ngIf="person.Phone">{{person.Phone}}</mat-card-subtitle>
+                <div class="logout">
+                    <button text-uppercase color="accent" (click)="logOut()" mat-button>{{'Log out'|translate}}</button>
+
+                </div>
+            </mat-card-header>
+
+
+            <mat-card-content>
+
+                <mat-tab-group>
+                    <mat-tab label="{{'Orders'|translate}}" isActive>
+                        <div class="orders-container">
+                            <orders></orders>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+
+
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>

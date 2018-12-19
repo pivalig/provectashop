@@ -1,0 +1,8 @@
+@import '~styles.scss';
+span {
+    font-size: 12px;
+    .value {
+        font-weight: 600;
+        // color: mat-color($candy-app-primary)
+    }
+}

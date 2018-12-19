@@ -1,0 +1,14 @@
+@import '~styles.scss';
+.count {
+    font-size: 1rem;
+    top: -5px;
+    right: -3px;
+    position: absolute;
+    background-color:  mat-color($candy-app-accent);
+    border-radius: 50%;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    line-height: 22px;
+}

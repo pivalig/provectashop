@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="container">
+    <loading-panel [loading]="isLoading"></loading-panel>
+
+
+    <div class="empty-message-container" *ngIf="searchResult && !searchResult.Entities?.length">
+      <h3>{{'Empty'|translate}}</h3>
+
+    </div>
+    <div class="col-md-6" *ngFor="let blog of searchResult?.Entities">
+      <blog [blog]="blog" [storeId]="organisationCode">
+      </blog>
+
+
+    </div>
+    <div class="text-center" *ngIf="searchResult && searchResult.Pager && searchResult.Pager.Pages > 1">
+      <pagination [maxSize]="10" [totalItems]="searchResult.Pager.Number" [(ngModel)]="currentPage" (pageChanged)="getProducts($event)"></pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+// .container {
+//   padding: 25px 0;
+//   // padding-top: 25px;
+
+// }
+
+// @media (max-width: 767px) {
+//   .container {
+//     padding: 0px;
+//   }
+// }
+
+
+mat-header-row{
+  display: none;
+}
+mat-card-footer{
+  padding: 20px 0;
+}
+
+mat-card {
+  .info-panel {
+    height: 100% !important;
+  }
+
+  .product-info {
+    height: 100%;
+    padding: 16px;
+
+    h1 {
+      margin: 0;
+      font-size: 4rem;
+      font-weight: 300;
+      padding-top: 2px;
+    }
+
+    .price {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      // font-weight: bolder;
+      font-size: 2rem;
+    }
+
+    .groups-container {
+      padding: 10px 0px;
+      // min-height: 300px;
+      .description{
+        padding:15px;
+      }
+    }
+  }
+
+  share-buttons {
+    padding-bottom: 10px;
+  }
+}

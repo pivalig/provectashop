@@ -1,0 +1,70 @@
+<div class="container ">
+  <loading-panel [loading]="!branch"></loading-panel>
+
+  <mat-card class="mat-elevation-z6" *ngIf="branch">
+
+    <mat-card-content>
+      <div class="row">
+        <div class="info-panel col-md-6">
+          <div style="height: 500px;">
+            <slider [asBackground]="false" *ngIf="isClient && branch?.Filestreams?.length" [slides]="branch?.Filestreams"></slider>
+          </div>
+        </div>
+        <div class="info-panel col-md-6">
+          <div class=" branch-info ">
+            <h1>{{branch?.Names | datatranslate:branch?.Name}}</h1>
+
+            <div class="groups-container">
+              <mat-tab-group>
+                <mat-tab label="{{'Details'|translate}}">
+                  <mat-list>
+
+                    <mat-list-item class="text-left" *ngIf="branch?.Address">
+                      <mat-icon matListIcon>location_on</mat-icon>
+                      <h3 matLine>
+                        {{branch?.Addresses | datatranslate:branch?.Address}}
+                      </h3>
+                    </mat-list-item>
+                    <mat-list-item class="text-left" *ngIf="branch?.Schedule">
+                      <mat-icon matListIcon>access_time</mat-icon>
+                      <h3 matLine>{{branch?.Schedules | datatranslate:branch?.Schedule}}</h3>
+                    </mat-list-item>
+                    <mat-list-item class="text-left" *ngIf="branch?.Phone">
+                      <mat-icon matListIcon>phone</mat-icon>
+                      <h3 matLine><a href="tel:{{branch?.Phone}}"> {{branch?.Phone}}</a></h3>
+                    </mat-list-item>
+
+                  </mat-list>
+                </mat-tab>
+
+                <mat-tab label="{{'Description'|translate}}" *ngIf="branch?.Descriptions| datatranslate:branch?.Description">
+                  <p class="description" [innerHtml]="branch?.Descriptions| datatranslate:branch?.Description">
+                  </p>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-12">
+          <hr />
+          <div class="map" *ngIf="hasLocation() && isClient">
+            <agm-map [zoom]="16" [latitude]="branch.Latitude" [longitude]="branch.Longitude">
+              <agm-marker [iconUrl]="markerIcon" [title]="branch?.Names| datatranslate:branch?.Name" [latitude]="branch.Latitude" [longitude]="branch.Longitude"></agm-marker>
+            </agm-map>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer *ngIf="isClient" class="text-center">
+      <hr />
+      <share-buttons [theme]="'material-dark'"
+                     [include]="['facebook','google','twitter','pinterest','telegram']"
+                     [show]="5"
+                     [showCount]="true"
+                     [url]="url"
+                     [size]="-2"></share-buttons>
+
+    </mat-card-footer>
+  </mat-card>
+</div>

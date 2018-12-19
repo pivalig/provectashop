@@ -1,0 +1,82 @@
+<div class="container ">
+    <loading-panel [loading]="isLoading"></loading-panel>
+
+    <mat-card class="mat-elevation-z6" *ngIf="product">
+
+
+        <mat-card-content>
+            <div class="row">
+                <div class="info-panel col-md-6">
+                    <div style="height: 500px;" *ngIf="filestreams?.length">
+                        <slider [asBackground]="false" *ngIf="isClient" [slides]="filestreams"></slider>
+                    </div>
+                </div>
+                <div class="info-panel col-md-6">
+                    <div class=" product-info ">
+                        <h1>{{product?.Names| datatranslate:product?.Name}}</h1>
+                        <!-- <button mat-icon-button >
+                            <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+                        </button> -->
+                        <div class="price">
+                            {{product?.Price | number:'1.2-2'}}
+                            <span class="currency">{{product.Organisation | setting:'currency'}}</span>
+                        </div>
+                        
+
+                        <div class="groups-container">
+                            <mat-tab-group>
+                                <mat-tab label="{{'Description'|translate}}" isActive *ngIf="(product?.Descriptions| datatranslate:product?.Description)">
+                                    <p class="description" [innerHtml]="product?.Descriptions| datatranslate:product?.Description">
+                                    </p>
+                                </mat-tab>
+                                <mat-tab label="{{'Details'|translate}}" *ngIf="groups?.length">
+
+                                    <mat-table #table [dataSource]="dataSource">
+
+                                        <!-- Position Column -->
+                                        <ng-container matColumnDef="ArticleSplit">
+                                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                            <mat-cell *matCellDef="let group">
+                                                <b>{{group.ArticleSplit?.Names | datatranslate: group.ArticleSplit?.Name}}</b>
+                                            </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="ArticleGroup">
+                                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                            <mat-cell *matCellDef="let group">{{group.Names | datatranslate: group.Name}}</mat-cell>
+                                        </ng-container>
+
+
+                                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                    </mat-table>
+
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+
+                        <div class="variants-container">
+                            <div class="col-sm-6" *ngFor="let item of splits">
+                                <mat-form-field style="width: 100%">
+                                    <mat-select [(ngModel)]="item.selected" placeholder="{{item?.Names| datatranslate:item?.Name}}">
+                                        <mat-option *ngFor="let group of item.groups" [value]="group">{{group?.Names| datatranslate:group?.Name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12">
+                                <button *ngIf="isClient && product" (click)="addToCart()" [disabled]="!canAddToCart" mat-raised-button color="primary">
+                                    {{'Add to cart'|translate}}</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-footer *ngIf="isClient && product" class="text-center">
+            <hr/>
+            <share-buttons [theme]="'material-dark'" [include]="['facebook','google','twitter','pinterest','telegram']" [show]="5" [showCount]="true"
+                [url]="url" [size]="-2"></share-buttons>
+
+        </mat-card-footer>
+    </mat-card>
+</div>

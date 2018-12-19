@@ -1,0 +1,32 @@
+<swiper class="swiper-container " [config]="config" [id]="sliderId" useSwiperClass="true">
+    <div class="swiper-slide" *ngFor="let post of posts" show-image [asBackground]="asBackground" [url]="post.Filestream | filestream">
+        <div *ngIf="post.Title">
+            <div class="post-title">
+                <h1 *ngIf="!post.Code">{{post.Title}}</h1>
+                <!-- <a *ngIf="post.Code" [routerLink]="getPostLink(post)" > -->
+                    <h1 class="cursor-pointer" *ngIf="post.Code"  [routerLink]="getPostLink(post)" >{{post.Title}}</h1>
+                <!-- </a> -->
+                <p class="post-subtitle">
+                    {{post.Subject}}
+                </p>
+            </div>
+        </div>
+    </div>
+</swiper>
+<!-- <div class="swiper-container " [id]="sliderId" height="'300px''">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let post of posts" show-image [asBackground]="asBackground" [url]="post.Filestream | filestream">
+            <div *ngIf="post.Title">
+                <div class="post-title">
+                    <h1>{{post.Title}}</h1>
+                    <p class="post-subtitle">
+                        {{post.Subject}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-button-next" [hidden]="posts?.length < 2"></div>
+    <div class="swiper-button-prev" [hidden]="posts?.length < 2"></div>
+    <div class="swiper-pagination" [hidden]="posts?.length < 2"></div>
+</div> -->

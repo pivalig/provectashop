@@ -1,0 +1,118 @@
+/* Import Bootstrap & Fonts */
+
+// $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+// Import all the tools needed to customize the theme and extract parts of it
+// @import '~@angular/material/theming';
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+$background-color: rgb(252, 252, 252);
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100% !important;
+    height: 100%;
+    font-family: Roboto, Arial, sans-serif;
+    color: #33383b;
+    // background-color: $background-color!important;
+    margin: 0!important;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+mat-sidenav-container{
+    height: 100%;
+    
+}
+
+mat-card-content,
+mat-card {
+    overflow: hidden;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+mat-toolbar .mat-form-field-underline {
+    background-color: transparent!important;
+}
+
+.buttons-end {
+    margin-left: 20px;
+}
+
+sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidenav {
+    padding: 20px;
+    width: 260px;
+    position: fixed !important;
+    .navigation {
+        margin-top: 30px;
+    }
+}
+
+mat-toolbar {
+    mat-form-field {
+        width: 50px;
+    }
+    mat-select {
+        font-size: 1.4rem;
+        text-align: right;
+    }
+    .mat-select-arrow,
+    .mat-select-value {
+        color: white !important;
+    }
+}
+
+.padding-top-15 {
+    padding-top: 15px;
+}
+
+.page-content {
+    margin-top: 64px;
+    padding-bottom: 75px;
+    min-height: 600px;
+    height: 100%;
+    background-color: $background-color;
+}
+
+@media (max-width: 600px) {
+    .page-content {
+        margin-top: 56px;
+    }
+}
+
+.caption {
+    height: 160px !important;
+    margin-top: -20px;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}

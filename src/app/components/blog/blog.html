@@ -1,0 +1,19 @@
+<a [routerLink]="blogLink" *ngIf="blog">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{blog.Titles | datatranslate: blog.Title}}</mat-card-title>
+      <mat-card-subtitle>{{blog.Date | date}}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div text-center>
+        <img mat-card-image [alt]="blog.Titles | datatranslate: blog.Title"
+        [src]="blog.Filestream | filestream" [title]="blog.Title">
+      </div>
+       
+      <p>
+        {{blog.Subjects | datatranslate: blog.Subject}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</a>

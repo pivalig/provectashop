@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+// $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+// @import '~font-awesome/css/font-awesome.min.css';
+// @import "font-awesome";
+@import "~@ngx-share/button/styles/share-buttons";
+@import "~@ngx-share/button/styles/themes/material/material-dark-theme";
+@import "~nouislider/distribute/nouislider.min.css";
+// @import '~font-awesome/css/font-awesome.min.css';
+// @import '~ngx-sharebuttons/styles/share-buttons';
+// @import '~ngx-sharebuttons/styles/themes/material/material-dark-theme.scss';
+// @import '~ngx-sharebuttons/styles/variables';
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+// Define the default theme (same as the example above).
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent : mat-palette($mat-pink,
+A200,
+A100,
+A400);
+$candy-app-theme : mat-light-theme($candy-app-primary,
+$candy-app-accent);
+// Include the default theme styles.
+@include angular-material-theme($candy-app-theme);
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent : mat-palette($mat-amber,
+A200,
+A100,
+A400);
+$dark-warn : mat-palette($mat-deep-orange);
+$dark-theme : mat-dark-theme($dark-primary,
+$dark-accent,
+$dark-warn);
+[text-uppercase] {
+    text-transform: uppercase;
+}
+
+.cursor-pointer:focus {
+    outline: 0;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+    &.primary {
+        color: mat-color($candy-app-primary);
+    }
+}
+
+.container {
+    padding: 25px 0;
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0px;
+    }
+}
+
+a[mat-raised-button] {
+    text-decoration: none!important;
+}
+
+.empty-message-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,24 @@
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+
+*:focus { outline: none; }
+
+@media (min-width: 767px) {
+    a { padding-right: 15px; }
+}
+
+@media (max-width: 767px) {
+    nav {
+        display: flex;
+        flex-flow: column;
+    }
+
+    a {
+        padding: 8px 0px;
+        color: black;
+    }
+}

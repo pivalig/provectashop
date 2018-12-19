@@ -1,0 +1,38 @@
+
+
+mat-card-footer{
+  padding: 20px 0;
+}
+
+mat-card {
+  .info-panel {
+    height: 100% !important;
+  }
+
+  .branch-info {
+    height: 100%;
+    padding: 16px;
+
+    h1 {
+      margin: 0;
+      font-size: 4rem;
+      font-weight: 300;
+      padding-top: 2px;
+    }
+
+
+    .groups-container {
+      padding: 25px 0px;
+      min-height: 300px;
+
+      .description {
+        padding: 15px;
+      }
+    }
+  }
+}
+
+agm-map {
+  height: 350px;
+  width: 100%;
+}

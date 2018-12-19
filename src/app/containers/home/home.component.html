@@ -1,0 +1,11 @@
+<div class="container-fluid">
+
+    <div class="main-slider" *ngIf="posts?.length">
+        <slider  [effect]="'fade'" *ngIf="isClient" [posts]="posts" [asBackground]="true"></slider>
+    </div>
+    <div *ngIf="isClient" class="padding-top-15 row">
+        <products (onLoaded)="productsLoaded($event)" [activatedRoute]="activatedRoute"
+                  [storeId]="organisationCode"
+                  [isClient]="isClient"></products>
+    </div>
+</div>

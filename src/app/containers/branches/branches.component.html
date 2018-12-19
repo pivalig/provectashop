@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="container">
+    <loading-panel [loading]="!branches"></loading-panel>
+
+    <div class="empty-message-container" *ngIf="branches && !branches.length">
+      <h3>{{'Empty'|translate}}</h3>
+    </div>
+
+    <branch class="col-md-6" *ngFor="let branch of branches" [branch]="branch" [storeId]="organisationCode">
+    </branch>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container ">
+    <loading-panel [loading]="!blog"></loading-panel>
+
+    <mat-card class="mat-elevation-z6 " *ngIf="blog">
+
+        <div class="gallery row">
+            <slider [asBackground]="true" *ngIf="isClient" [slides]="blog?.Filestreams"></slider>
+        </div>
+
+        <mat-card-content>
+
+
+            <div class=" padding-top-15">
+                <mat-card-title>{{blog?.Titles | datatranslate: blog?.Title}}</mat-card-title>
+                <mat-card-subtitle>{{blog?.Subjects | datatranslate: blog?.Subject}}</mat-card-subtitle>
+                <p>{{blog?.Date | date}}</p>
+
+                <br/>
+                <p [innerHtml]="blog?.Bodies | datatranslate: blog?.Body">
+                </p>
+            </div>
+
+        </mat-card-content>
+        <mat-card-footer *ngIf="isClient" class="text-center">
+            <hr/>
+            <share-buttons [theme]="'material-dark'"
+                           [include]="['facebook','google','twitter','pinterest','telegram']"
+                           [show]="5"
+                           [showCount]="true"
+                           [url]="url"
+                           [size]="-2"></share-buttons>
+        </mat-card-footer>
+    </mat-card>
+</div>

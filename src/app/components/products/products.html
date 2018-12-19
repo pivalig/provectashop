@@ -1,0 +1,84 @@
+<div class="container-fluid" #productshost>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-3 col-sm-4 hidden-xs text-right">
+        <button *ngIf="isFiltersExists && filters?.length" mat-button (click)="clearFilters()">{{'Clear all'|translate}}</button>
+      </div>
+      <div class="col-xs-6 visible-xs">
+        <button class="visible-xs" (click)="openFiltersDialog()" mat-icon-button>
+          <mat-icon>filter_list</mat-icon>
+        </button>
+
+      </div>
+      <div class="col-sm-push-4  col-sm-4 col-md-push-6  col-md-3 col-xs-6 text-right">
+        <mat-form-field style="width: 100%">
+          <mat-select [(ngModel)]="sort" placeholder="{{'Sorting'|translate}}" (selectionChange)="onFilterChange($event)">
+            <mat-option value="newest">{{'Newest'|translate}}</mat-option>
+            <mat-option value="price.asc">{{'Price Asc'|translate}}</mat-option>
+            <mat-option value="price.desc">{{'Price Desc'|translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-md-3 col-sm-4 hidden-xs">
+        <mat-expansion-panel [expanded]="true" *ngFor="let filter of filters" class="noselect">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{filter.split.Names | datatranslate: filter.split.Name}}
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+
+
+          <mat-list-item *ngFor="let group of filter.groups">
+            <mat-checkbox [(ngModel)]="group.checked" class="noselect" (ngModelChange)="onFilterChange($event)">{{group.Names|datatranslate:group.Name}}</mat-checkbox>
+          </mat-list-item>
+        </mat-expansion-panel>
+        <div *ngIf="priceRangeConfig" class="padding-top">
+          <div class="col-xs-6">
+            <span *ngIf="priceRange">
+              {{priceRange[0] | number:'1.2-2'}}
+            </span>
+
+          </div>
+          <div class="col-xs-6 text-right">
+            <span *ngIf="priceRange">
+              {{priceRange[1] | number:'1.2-2'}}
+            </span>
+          </div>
+          <div class="col-xs-12">
+            <nouislider [config]="priceRangeConfig" [(ngModel)]="priceRange" (ngModelChange)="onPriceRangeChange($event)"></nouislider>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-8 example-container ">
+
+        <loading-panel [loading]="isLoading"></loading-panel>
+        <!-- <div class="example-loading-shade" *ngIf="isLoading">
+            <mat-spinner [diameter]="75" *ngIf="isLoading"></mat-spinner>
+            <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+              
+            </div>
+          </div> -->
+          <div class="empty-message-container" *ngIf="searchResult && !searchResult.Entities?.length">
+          <h3>{{'Empty'|translate}}</h3>
+        </div>
+
+        <div class="row products-result">
+          <div class="product-container col-md-4 col-sm-6 col-xs-6" *ngFor="let product of searchResult?.Entities">
+            <product [product]="product" [storeId]="storeId">
+            </product>
+          </div>
+        </div>
+        <div class="text-center" *ngIf="searchResult && searchResult.Pager && searchResult.Pager.Pages > 1">
+          <mat-paginator [length]="searchResult.Pager.Number" [pageIndex]="currentPage" (page)="getProducts($event)" [pageSize]="12">
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

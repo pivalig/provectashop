@@ -1,0 +1,50 @@
+<mat-sidenav-container class="">
+  <mat-sidenav #sidenav class="sidenav visible-xs" *ngIf="organisation">
+    <div class="caption" *ngIf="organisation" show-image [asBackground]="true" [url]="organisation.Filestream | filestream">
+    </div>
+    <nav-menu *ngIf="isLoaded"></nav-menu>
+    <mat-form-field>
+      <mat-select [(ngModel)]="lang" (selectionChange)="setLanguage(lang)">
+        <mat-option value="ru">Ру</mat-option>
+        <mat-option value="ro">Ro</mat-option>
+        <mat-option value="en">En</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-sidenav>
+
+  <div class="sidenav-content">
+    <mat-toolbar color="primary" class="fixed-header mat-elevation-z6">
+      <button *ngIf="organisation" (click)="toggleDrawer()" class="visible-xs" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span (onLoaded)="organisation = $event" apptitle *ngIf="isLoaded"></span>
+      <span class="fill-remaining-space"></span>
+
+      <span>
+        <nav-menu class="hidden-xs"></nav-menu>
+      </span>
+      <mat-form-field class="hidden-xs">
+        <mat-select class="text-center" [(ngModel)]="lang" (selectionChange)="setLanguage(lang)">
+          <mat-option value="ru">Ру</mat-option>
+          <mat-option value="ro">Ro</mat-option>
+          <mat-option value="en">En</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="buttons-end">
+        <cart-button></cart-button>
+        
+      </div>
+
+    </mat-toolbar>
+
+
+    <div class="page-content mat-typography">
+      <router-outlet>
+      </router-outlet>
+    </div>
+
+  </div>
+
+</mat-sidenav-container>

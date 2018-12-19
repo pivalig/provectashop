@@ -1,0 +1,74 @@
+.product-container{
+  padding: 5px;
+}
+.padding-top {
+    padding-top: 15px;
+}
+
+.mat-expansion-panel-content {
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden!important;
+}
+
+.mat-checkbox-layout {
+    white-space: normal!important;
+}
+
+.panel-body {
+    padding-bottom: 6px;
+    padding-top: 6px;
+}
+
+.panel-heading {
+    background: white !important;
+    font-weight: bolder;
+}
+
+.filter-container {
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+}
+
+.mdl-checkbox__label {
+    width: 100%;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.noUi-connect {
+    background: rgb(63, 81, 181);
+}
+
+.sortings {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.products-result {
+    min-height: 600px;
+}
+
+.cdk-overlay-pane {
+    max-width: 95% !important;
+    /*height:100%;*/
+}
+
+// .example-loading-shade {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+//     background: rgba(0, 0, 0, 0.04);
+//     z-index: 1;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+//   .example-container {
+//     display: flex;
+//     flex-direction: column;
+//     position: relative;
+//   }

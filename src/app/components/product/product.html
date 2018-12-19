@@ -1,0 +1,14 @@
+<a [routerLink]="productLink" *ngIf="product">
+  <mat-card>
+    <div class="image" show-image [asBackground]="true" [url]="product.Filestream | filestream">
+      <img [alt]="product.Names | datatranslate:product.Name" style="display: none"
+           [src]="product.Filestream | filestream" [title]="product.Names | datatranslate:product.Name">
+    </div>
+    <div class="description">
+      <div class="title">{{product.Names | datatranslate:product.Name}}</div>
+      <p color="primary" class="price">{{product.Price || 0 | number:'1.2-2'}}
+          <span class="currency">{{organisation | setting:'currency'}}</span>
+      </p>
+    </div>
+  </mat-card>
+</a>
